@@ -25,26 +25,42 @@ class CallbackForm extends FormAbstract
 
     public function validate(): bool
     {
-        if (empty($this->name) || strlen($this->name) > 20 || strlen($this->name) < 2) {
+        if (empty($this->name) || strlen($this->name) > 30 || strlen($this->name) < 2) {
             return false;
         }
         if (empty($this->phone) || strlen($this->phone) < 7 || strlen($this->phone) > 15) {
             return false;
         }
+        if (empty($this->email)) {
+            return true;
+        }
         if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            echo "Вы ввели некорректный адрес электронной почты<br>";
             return false;
+
         }
         return true;
     }
 
     public function send()
     {
-        echo "<h3>Форма успешно отправлена!</h3>";
-        echo '<br>';
-        echo 'Name: ' . $this->name;
-        echo '<br>';
-        echo 'Phone: ' . $this->phone;
-        echo '<br>';
-        echo 'E-mail: ' . $this->email;
+        if (!empty($this->email)) {
+            echo "<h3>Форма успешно отправлена!</h3>";
+            echo '<br>';
+            echo 'Name: ' . $this->name;
+            echo '<br>';
+            echo 'Phone: ' . $this->phone;
+            echo '<br>';
+            echo 'Email: ' . $this->email;
+            echo '<br>';
+        }
+        else{
+            echo "<h3>Форма успешно отправлена!</h3>";
+            echo '<br>';
+            echo 'Name: ' . $this->name;
+            echo '<br>';
+            echo 'Phone: ' . $this->phone;
+            echo '<br>';
+        }
     }
 }

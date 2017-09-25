@@ -10,6 +10,6 @@ class Helper
 {
     public static function getPostParam(string $varName)
     {
-        return trim($_POST[$varName]) ?? '';
+        return htmlspecialchars(trim($_POST[$varName]) ?? '');
     }
 }
