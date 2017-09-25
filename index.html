@@ -236,6 +236,9 @@
                     <input class="field num-f" id="num" type="text" name="phone" placeholder="Номер телефона*">
                     <input class="field mail-f" id="mail" type="text" name="email" placeholder="Почта">
                     <input type="hidden" name="formType" value="callback">
+                    <form action=upload.php method=post enctype=multipart/form-data>
+                    <input type=file name=uploadfile>
+                    <!--<input type=submit value=Загрузить></form>-->
                     <input class="field sub" type="submit" value="Отправить Заявку">
                 </form>
             </div>
